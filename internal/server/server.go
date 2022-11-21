@@ -1,18 +1,14 @@
 package server
 
-import "context"
+import (
+	"fmsh-rest-api/internal/router"
+	"net/http"
+)
 
-// ServerInterface interface
-type ServerInterface interface {
-	Listen() error
-	Shutdown(context.Context) error
-}
-
-func NewServer(serverType string, routerType string) ServerInterface {
-	switch serverType {
-	case "test":
-		return NewTestServer()
-	default:
-		return NewHttpServer(routerType)
+// New function
+func New(routerType string) *http.Server {
+	return &http.Server{
+		Addr:    ":8081",
+		Handler: router.New(routerType),
 	}
 }

@@ -4,29 +4,24 @@ import (
 	"context"
 	"fmsh-rest-api/internal/server"
 	"log"
+	"net/http"
 )
-
-// ServerInterface interface
-type ServerInterface interface {
-	Listen() error
-	Shutdown(context.Context) error
-}
 
 // Application ...
 type Application struct {
-	srv ServerInterface
+	srv *http.Server
 }
 
 // NewApplication function
-func NewApplication(serverType string, routerType string) *Application {
+func NewApplication(routerType string) *Application {
 	return &Application{
-		srv: server.NewServer(serverType, routerType),
+		srv: server.New(routerType),
 	}
 }
 
 // Start function
 func (a *Application) Start() {
-	if err := a.srv.Listen(); err != nil {
+	if err := a.srv.ListenAndServe(); err != nil {
 		log.Println(err)
 	}
 }

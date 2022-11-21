@@ -1,17 +1,17 @@
 package router
 
-import "net/http"
+import (
+	"fmsh-rest-api/internal/router/gin_router"
+	"fmsh-rest-api/internal/router/http_router"
+	"net/http"
+)
 
-// NewRouter function
-func NewRouter(routerType string) http.Handler {
-	var handler http.Handler
-
+// New function
+func New(routerType string) http.Handler {
 	switch routerType {
 	case "gin":
-		handler = NewGinRouter()
+		return gin_router.New()
 	default:
-		handler = NewHttpRouter()
+		return http_router.New()
 	}
-
-	return handler
 }
