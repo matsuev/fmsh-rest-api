@@ -18,11 +18,3 @@ func New() http.Handler {
 
 	return router
 }
-
-func handleGetHello(c *gin.Context) {
-	c.String(http.StatusOK, "Hello!")
-}
-
-func handlePostHello(c *gin.Context) {
-	c.String(http.StatusOK, "Hello! post request")
-}
