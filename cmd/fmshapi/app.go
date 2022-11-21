@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"fmsh-rest-api/internal/config"
+	"fmsh-rest-api/internal/router"
 	"fmsh-rest-api/internal/server"
 	"log"
 	"net/http"
@@ -13,9 +15,12 @@ type Application struct {
 }
 
 // NewApplication function
-func NewApplication(routerType string) *Application {
+func NewApplication(cfg *config.AppConfig) *Application {
+	srv := server.New(cfg.Server)
+	srv.Handler = router.New(cfg.Router)
+
 	return &Application{
-		srv: server.New(routerType),
+		srv: srv,
 	}
 }
 
