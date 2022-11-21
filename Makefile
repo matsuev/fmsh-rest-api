@@ -6,7 +6,7 @@ app_name := apiserver
 
 .PHONY: run
 run:
-	go run ./cmd/$(app_path)
+	@go run ./cmd/$(app_path)
 
 .PHONY: build
 build:
