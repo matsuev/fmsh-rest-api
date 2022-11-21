@@ -4,3 +4,4 @@ server:
 
 router:
   mode: gin
+  log_enable: true

@@ -8,6 +8,17 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// setupRouter function
+func setupRouter(mode string) http.Handler {
+	cfg := &Config{
+		Mode:      mode,
+		LogEnable: false,
+	}
+
+	return New(cfg)
+}
+
+// Test_handleGetHello function
 func Test_handleGetHello(t *testing.T) {
 	testCases := []struct {
 		name   string
@@ -44,6 +55,7 @@ func Test_handleGetHello(t *testing.T) {
 	}
 }
 
+// Test_handlePostHello function
 func Test_handlePostHello(t *testing.T) {
 	testCases := []struct {
 		name   string
@@ -80,13 +92,14 @@ func Test_handlePostHello(t *testing.T) {
 	}
 }
 
-// func Benchmark_handleGetHello(b *testing.B) {
-// 	r := setupRouter("gin")
+// Benchmark_handleGetHello function
+func Benchmark_handleGetHello(b *testing.B) {
+	r := setupRouter(MODE_GIN)
 
-// 	rec := httptest.NewRecorder()
-// 	req, _ := http.NewRequest(http.MethodGet, "/hello", nil)
+	rec := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/hello", nil)
 
-// 	for i := 0; i < b.N; i++ {
-// 		r.ServeHTTP(rec, req)
-// 	}
-// }
+	for i := 0; i < b.N; i++ {
+		r.ServeHTTP(rec, req)
+	}
+}
