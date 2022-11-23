@@ -1,19 +1,14 @@
 package server
 
 import (
-	"fmt"
+	"fmsh-rest-api/internal/router"
 	"net/http"
 )
 
-// Config ...
-type Config struct {
-	Addr string `yaml:"addr"`
-	Port string `yaml:"port"`
-}
-
 // New function
-func New(cfg *Config) *http.Server {
+func New(routerType string) *http.Server {
 	return &http.Server{
-		Addr: fmt.Sprintf("%s:%s", cfg.Addr, cfg.Port),
+		Addr:    ":8081",
+		Handler: router.New(routerType),
 	}
 }

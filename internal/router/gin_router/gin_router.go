@@ -1,24 +1,17 @@
 package gin_router
 
 import (
-	"io"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 // New function
-func New(logEnable bool) http.Handler {
-	gin.SetMode(gin.ReleaseMode)
+func New() http.Handler {
 
 	router := gin.New()
-	router.Use(gin.Recovery())
 
-	if logEnable {
-		router.Use(gin.Logger())
-	} else {
-		gin.DefaultWriter = io.Discard
-	}
+	router.Use(gin.Logger(), gin.Recovery())
 
 	router.GET("/hello", handleGetHello)
 	router.POST("/hello", handlePostHello)
