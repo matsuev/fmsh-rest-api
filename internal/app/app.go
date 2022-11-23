@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"context"
@@ -14,8 +14,8 @@ type Application struct {
 	srv *http.Server
 }
 
-// NewApplication function
-func NewApplication(cfg *config.AppConfig) *Application {
+// New function
+func New(cfg *config.AppConfig) *Application {
 	srv := server.New(cfg.Server)
 	srv.Handler = router.New(cfg.Router)
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmsh-rest-api/internal/app"
 	"fmsh-rest-api/internal/config"
 	"log"
 )
@@ -13,9 +14,9 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	app := NewApplication(cfg)
+	fmshapi := app.New(cfg)
 
-	app.Start()
+	fmshapi.Start()
 
-	app.Shutdown()
+	fmshapi.Shutdown()
 }
