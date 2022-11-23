@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// New function
+// New function ...
 func New() http.Handler {
 
 	router := gin.New()

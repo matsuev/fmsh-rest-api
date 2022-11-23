@@ -6,7 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// New function
+// New function ...
 func New() http.Handler {
 	router := httprouter.New()
 

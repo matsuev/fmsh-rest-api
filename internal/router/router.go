@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// New function
+// New function ...
 func New(routerType string) http.Handler {
 	switch routerType {
 	case "gin":

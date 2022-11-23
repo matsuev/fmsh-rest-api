@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// New function
+// New function ...
 func New(routerType string) *http.Server {
 	return &http.Server{
 		Addr:    ":8081",

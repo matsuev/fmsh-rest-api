@@ -6,7 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// handleGetHello function
+// handleGetHello function ...
 func handleGetHello(w http.ResponseWriter, req *http.Request, params httprouter.Params) {
 	w.Write([]byte("Hello!"))
 }

@@ -12,7 +12,7 @@ type Application struct {
 	srv *http.Server
 }
 
-// NewApplication function
+// NewApplication function ...
 func NewApplication(routerType string) *Application {
 	return &Application{
 		srv: server.New(routerType),
